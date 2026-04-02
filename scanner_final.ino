@@ -27,8 +27,7 @@ LiquidCrystal lcd(2, 3, 4, 6, 7, 8);
 // =====================================================
 // Relay / Lock settings
 // =====================================================
-// Your relay is active LOW if the relay LED turns on when the pin is LOW.
-// Keep this as true unless testing proves otherwise.
+// Relay is active LOW if the relay LED turns on when the pin is LOW.
 const bool RELAY_ACTIVE_LOW = true;
 
 // Time door stays unlocked after authorised access
@@ -69,8 +68,6 @@ void relayOn() {
 void relayOff() {
   digitalWrite(RELAY_PIN, RELAY_ACTIVE_LOW ? HIGH : LOW);
 }
-
-// Confirmed behaviour from your testing:
 // relay ON  -> lock unlocked
 // relay OFF -> lock locked
 void lockDoor() {
@@ -182,7 +179,6 @@ void printUIDToSerial() {
 }
 
 bool isAuthorised() {
-  // This project currently expects 4-byte UIDs
   if (mfrc522.uid.size != 4) {
     return false;
   }
